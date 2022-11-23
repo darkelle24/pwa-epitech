@@ -1,0 +1,46 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch via NPM",
+            "request": "launch",
+            "runtimeArgs": [
+                "run-script",
+                "start:debug"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node",
+            "sourceMaps": true,
+            "outputCapture": "std",
+            "envFile": "${workspaceFolder}/.env",
+            "cwd": "${workspaceRoot}",
+            "console": "internalConsole",
+            "autoAttachChildProcesses": true
+        },
+        /* {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Nest Framework",
+            "args": [
+                "${workspaceFolder}/src/main.ts"
+            ],
+            "runtimeArgs": [
+                "--nolazy",
+                "-r",
+                "ts-node/register",
+                "-r",
+                "tsconfig-paths/register"
+            ],
+            "sourceMaps": true,
+            "internalConsoleOptions": "openOnSessionStart",
+            "outputCapture": "std",
+            "envFile": "${workspaceFolder}/.env",
+            "cwd": "${workspaceRoot}",
+            "console": "internalConsole",
+            "autoAttachChildProcesses": true
+        } */
+    ]
+  }

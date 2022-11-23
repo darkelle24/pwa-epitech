@@ -1,0 +1,24 @@
+<div class="content" >
+  <div class="editor-area">
+    <div *ngIf="isLoading" class="loadingScreen">
+      <div class="loadingBox" style="height: 100%">
+        <mat-spinner diameter="200"></mat-spinner>
+      </div>
+    </div>
+    <canvas #myCanvas id='mycanvas' ></canvas>
+    <div class="toolbar">
+      <button mat-mini-fab class="tuto" [matTooltip]="'Show tuto'" (click)="tuto()">
+        <mat-icon>help</mat-icon>
+      </button>
+      <button mat-mini-fab class="clear" [matTooltip]="'Clear the blueprint'" (click)="clear()">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-mini-fab class="resetToDefault" [matTooltip]="'Abort current change'" (click)="downloadBlueprint()">
+        <mat-icon>restart_alt</mat-icon>
+      </button>
+      <button mat-fab  class="deploy" [matTooltip]="'Deploy blueprint on the box'" (click)="deploy()">
+        <mat-icon>file_upload</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

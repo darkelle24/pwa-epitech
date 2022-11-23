@@ -1,0 +1,36 @@
+<div class="page-login">
+  <div class="login page">
+      <div class="center">
+          <h1 class="title">LOGIN</h1>
+      </div>
+      <form [formGroup]="Form" id="myForm" class="formulaire" (ngSubmit)="login()">
+        <mat-form-field style="font-size: 15px;" class="form" appearance="standard" color="white">
+            <mat-label>Username</mat-label>
+            <input matInput [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com" type="name" [formControl]="Form.controls.email" autocomplete="on" name="username" required>
+            <mat-error *ngIf="Form.controls.email.hasError('required')">
+              Please enter an username
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field style="font-size: 15px;"  class="form" appearance="standard" color="white">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="Form.controls.password" autocomplete="on" name="current-password" required>
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="Form.controls.password.hasError('required')">
+              Please enter a password
+            </mat-error>
+        </mat-form-field>
+        <div class="center">
+            <button mat-raised-button class="login-butt" type="submit" form="myForm" (click)="login()" *ngIf="!isLoading">Login</button>
+            <div style="display: flex; justify-content: center; align-items: center">
+                <mat-spinner *ngIf="isLoading" diameter="30">
+                </mat-spinner>
+            </div>
+        </div>
+      </form>
+      <!-- <div class="to-register">
+          <span>Need to create an <a routerLink="/register"> account</a></span>
+      </div> -->
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="page list">
+  <div class="titlebox">
+    <h2 class="title">List of box</h2>
+    <div class="subtitle">List all of associated box</div>
+  </div>
+  <div class="loadingBox">
+    <mat-spinner *ngIf="isLoading" diameter="100"></mat-spinner>
+  </div>
+  <ng-container *ngIf="!isLoading">
+    <app-box [box]="box" *ngFor="let box of listBox" ></app-box>
+    <div class="toolbar">
+      <button mat-fab *ngIf="!isLoadingButton" class="addButton" [matTooltip]="'Add a new box'" (click)="addBox()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <mat-spinner *ngIf="isLoadingButton" diameter="75"></mat-spinner>
+    </div>
+  </ng-container>
+</div>

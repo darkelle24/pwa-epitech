@@ -1,0 +1,21 @@
+<div class="page">
+  <div class="titlebox">
+    <h2 class="title">Box Metrics</h2>
+    <div *ngIf="!isLoading" class="subtitle">Current metrics of {{box.name ? "\'" + box.name + "\'" : 'Not Define'}} box</div>
+  </div>
+
+  <div class="loadingBox">
+    <mat-spinner *ngIf="isLoading" diameter="100"></mat-spinner>
+  </div>
+
+  <ng-container *ngIf="!isLoading">
+
+    <div class="listPort">
+      <div class="port" *ngFor="let port of box.ports">
+        <app-one-port [id]="id" [port]="port" [data]="getDataPort(port.pin)"></app-one-port>
+      </div>
+    </div>
+
+  </ng-container>
+
+</div>

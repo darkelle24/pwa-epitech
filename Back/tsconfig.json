@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@ExecptionFilter/*": ["src/common/exceptionFilter/*"],
+      "@Roles/*": ["src/common/roles/*"],
+      "@FileUploadHelpers/*": ["src/common/files/upload/*"],
+      "@FileDownloadHelpers/*": ["src/common/files/download/*"],
+      "@FileHelpers/*": ["src/common/files/*"],
+      "@Helper/*": ["src/common/*"],
+
+      "@User/*": ["src/api/users/*"],
+      "@File/*": ["src/api/files/*"],
+      "@Api/*": ["src/api/*"],
+
+      "@/*": ["src/*"],
+    },
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node"]
+  }
+}

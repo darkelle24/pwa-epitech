@@ -1,0 +1,15 @@
+.label {
+  font-weight: 500;
+  font: inherit;
+}
+
+.listPort {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  gap: 2rem
+}
+
+.port {
+  width: calc(50% - 1rem);
+}

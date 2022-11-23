@@ -1,0 +1,159 @@
+#node-panel {
+  font: 14px Tahoma!important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -200px;
+  background-color: #2A2A2A;
+  min-width: 400px;
+  min-height: 200px;
+  box-shadow: 0 0 4px #111;
+  border-radius: 6px;
+}
+
+#node-panel {
+  left: 10px;
+  top: 10px;
+  height: calc( 100% - 20px);
+  margin: auto;
+}
+
+#node-panel .close {
+  float: right;
+  margin: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+
+#node-panel .close:hover {
+  color: white;
+}
+
+#node-panel .dialog-header {
+  color: #AAA;
+  border-bottom: 1px solid #161616;
+}
+
+#node-panel .dialog-header {
+  height: 40px;
+}
+
+#node-panel .dialog-footer {
+  //height: 50px;
+  padding: 10px;
+  border-top: 1px solid #1a1a1a;
+}
+
+#node-panel .dialog-header .dialog-title {
+  font: 20px "Arial";
+  margin: 4px;
+  padding: 4px 10px;
+  display: inline-block;
+}
+
+#node-panel .dialog-content {
+  height: calc(100% - 90px);
+  width: 100%;
+  min-height: 100px;
+  display: inline-block;
+  color: #AAA;
+  /*background-color: black;*/
+}
+
+#node-panel .dialog-content h3 {
+  margin: 10px;
+}
+
+#node-panel .dialog-content .connections {
+  flex-direction: row;
+}
+
+#node-panel .dialog-content .connections .connections_side {
+  width: calc(50% - 5px);
+  min-height: 100px;
+  background-color: black;
+  display: flex;
+}
+
+#node-panel .node_type {
+  font-size: 1.2em;
+  display: block;
+  margin: 10px;
+}
+
+#node-panel .node_desc {
+  opacity: 0.5;
+  display: block;
+  margin: 10px;
+}
+
+#node-panel .separator {
+  display: block;
+  width: calc( 100% - 4px);
+  height: 1px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #333;
+  margin: 10px 2px;
+  padding: 0;
+}
+
+#node-panel .property {
+  margin-bottom: 2px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+#node-panel .property_name {
+  color: #737373;
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+  width: 160px;
+  padding-left: 4px;
+  overflow: hidden;
+}
+
+#node-panel .property_value {
+  display: inline-block;
+  text-align: right;
+  color: #AAA;
+  background-color: #1A1A1A;
+  width: calc( 100% - 162px);
+  max-height: 300px;
+  padding: 4px;
+  padding-right: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+#node-panel .property_value:hover {
+  color: white;
+}
+
+#node-panel .property.boolean .property_value {
+  padding-right: 30px;
+}
+
+#node-panel .btn {
+  border: 0;
+  border-radius: 4px;
+  padding: 4px 20px;
+  margin-left: 0px;
+  background-color: #060606;
+  color: #8e8e8e;
+}
+
+#node-panel .btn:hover {
+  background-color: #111;
+  color: #FFF;
+}
+
+#node-panel .btn.delete:hover {
+  background-color: #F33;
+  color: black;
+}

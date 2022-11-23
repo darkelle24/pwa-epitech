@@ -1,0 +1,33 @@
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row>
+
+    <div (click)="goTo('/box')" style="display: flex;align-items: center;align-content: center;gap: 5px;margin-left: 15px;cursor: pointer;">
+        <img style="width: 40px;height: 30px;" src="../../../assets/belgium-flag.png" alt="">
+        <span>Clepsydre</span>
+    </div>
+
+    <span class="example-spacer"></span>
+
+    <div class="info" [matMenuTriggerFor]="menu">
+        <span  class="name">lol</span>
+        <mat-icon class="mat-icon">account_circle</mat-icon>
+    </div>
+    <mat-menu #menu="matMenu">
+        <!-- <button  (click)="goTo('/register')" mat-menu-item>
+        <mat-icon>add_circle_outline</mat-icon>
+        <span>Register</span>
+      </button> -->
+        <button (click)="goTo('/login')" mat-menu-item>
+        <mat-icon>login</mat-icon>
+        <span>Login</span>
+      </button>
+        <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="secondHeader">
+    <second-header style="width: 100%;"></second-header>
+  </mat-toolbar-row>
+</mat-toolbar>

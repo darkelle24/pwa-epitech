@@ -1,0 +1,45 @@
+.background {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--background_color);
+}
+
+.body {
+  height: 100vh;
+}
+
+.page {
+  min-height: calc(100vh - 64px);
+  width: 100%;
+}
+
+.vertical {
+  width: 280px;
+}
+
+.content {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(var(--bg-card-rgb), 1) !important;
+}
+
+.innerContent {
+  width: var(--width-page);
+}
+
+.space {
+  height: var(--page-padding) !important;
+  width: 100%;
+}
+
+.replaceHeader {
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.schemaClass {
+  width: 100%;
+}

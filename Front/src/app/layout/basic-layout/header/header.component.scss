@@ -1,0 +1,40 @@
+.icon {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.info {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.name {
+  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-icon {
+  height: 40px;
+  width: 40px;
+  font-size: 40px;
+  line-height: 40px!important;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer
+}
+
+.toolbar {
+  background-color: rgba(15, 23, 42, 1) !important;
+  color: rgba(var(--text-default-rgb), 1) !important;
+  //padding-left: var(--padding-header) !important;
+  //padding-right: calc(var(--padding-header) + 15px) !important;
+}

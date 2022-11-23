@@ -1,0 +1,15 @@
+<mat-drawer-container class="background ">
+  <mat-drawer-content>
+      <div>
+        <app-header class="header" ></app-header>
+      </div>
+
+      <div class="content mat-drawer-body">
+        <div class="innerContent" [ngClass]="{schemaClass: fullScreen}">
+          <div class="space" *ngIf="!fullScreen"></div>
+          <router-outlet></router-outlet>
+          <div class="space" *ngIf="!fullScreen"></div>
+        </div>
+      </div>
+  </mat-drawer-content>
+</mat-drawer-container>
