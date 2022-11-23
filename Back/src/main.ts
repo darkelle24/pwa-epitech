@@ -26,7 +26,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('Test docs')
+    .setTitle('Pwa epitech backend API')
     .setDescription('The test API description')
     .setVersion('1.0')
     .build();

@@ -73,7 +73,7 @@ export class UsersController {
 
   @Put(':uuid/picture')
   @Auth(RolesEnum.Admin, RolesEnum.SuperAdmin)
-  @ApiImageFile('picture')
+  @ApiImageFile('picture', true)
   async updatePicture(@Param('uuid') uuid: string, @User() user: UserEntity, @UploadedFile() file: Express.Multer.File): Promise<UserWithoutPassword> {
     await this.usersService.checkAuth(uuid, user)
     let save = await this.fileService.createFile(file)
