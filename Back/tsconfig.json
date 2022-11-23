@@ -27,6 +27,7 @@
 
       "@User/*": ["src/api/users/*"],
       "@File/*": ["src/api/files/*"],
+      "@Clothe/*": ["src/api/clothes/*"],
       "@Api/*": ["src/api/*"],
 
       "@/*": ["src/*"],

@@ -1,7 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity, OneToMany, OneToOne, JoinColumn, BeforeRemove } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity, OneToMany, OneToOne, JoinColumn, BeforeRemove, ManyToMany, JoinTable } from 'typeorm';
 import { OmitType } from '@nestjs/swagger';
 import { RolesEnum } from '@Helper/roles/roles';
 import { FileEntity } from '@File/entities/file.entity';
+import { ClotheEntity } from '../../clothes/entities/clothe.entity';
 
 @Entity()
 export class UserEntity extends BaseEntity {
@@ -37,6 +38,14 @@ export class UserEntity extends BaseEntity {
       this.picture.remove()
     }
   }
+
+  @ManyToMany(() => ClotheEntity, {
+    eager: false,
+    lazy: true,
+    onDelete: 'SET NULL'
+  })
+  @JoinTable()
+  clotheLike: ClotheEntity[]
 }
 
 export class UserWithoutPassword extends OmitType(UserEntity, ['password'] as const) {

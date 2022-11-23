@@ -6,6 +6,7 @@ import { FindOptionsSelectByString, Repository } from 'typeorm';
 import { CreateUserDto } from './../dto/create-user.dto';
 import { AuthReturnDto, LoginDto } from './dto/login.dto';
 import { AuthHelper } from './other/auth.helper';
+import { UsersService } from '../users.service';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,8 @@ export class AuthService {
     private readonly repository: Repository<UserEntity>,
 
     @Inject(AuthHelper)
-    private readonly helper: AuthHelper
+    private readonly helper: AuthHelper,
+    private readonly userService: UsersService
   ) {}
 
   userEntities: string[] = this.repository.metadata.ownColumns.map(column => column.propertyName)
@@ -22,13 +24,11 @@ export class AuthService {
   public async register(body: CreateUserDto): Promise<UserEntity> {
     const { username, email, password }: CreateUserDto = body;
 
-    let user = new UserEntity();
+    body.username = username;
+    body.email = email;
+    body.password = this.helper.encodePassword(password);
 
-    user.username = username;
-    user.email = email;
-    user.password = this.helper.encodePassword(password);
-
-    return basicCreate(this.repository, UserEntity, user).then((value) => {
+    return this.userService.create(body).then((value) => {
       if (value)
         delete value.password
       return value

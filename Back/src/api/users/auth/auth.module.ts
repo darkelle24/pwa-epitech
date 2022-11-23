@@ -1,5 +1,5 @@
 import { UserEntity } from '@/api/users/entities/user.entity';
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
@@ -8,6 +8,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { AuthHelper } from './other/auth.helper';
 import { JwtStrategy } from './other/auth.strategy';
+import { UsersModule } from '../users.module';
 
 @Module({
   controllers: [AuthController],
@@ -23,6 +24,7 @@ import { JwtStrategy } from './other/auth.strategy';
         signOptions: {expiresIn: configService.get<string>('JWT_EXPIRES')}
       }),
     }),
+    forwardRef(() => UsersModule)
   ]
 })
 export class AuthModule {}

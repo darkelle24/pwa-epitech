@@ -9,6 +9,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity, UserWithoutPassword } from './entities/user.entity';
 import { User } from './other/user.decorator';
 import { UsersService } from './users.service';
+import { ClotheEntity } from '@Clothe/entities/clothe.entity';
 
 @ApiTags('Users')
 @Controller('users')
@@ -25,6 +26,24 @@ export class UsersController {
   @Auth()
   updateMe(@User() user: UserEntity, @Body() updateUserDto: UpdateUserDto): Promise<UserWithoutPassword> {
     return this.usersService.update(user.id, updateUserDto);
+  }
+
+  @Put('me/like/:idClothe')
+  @Auth()
+  async likeClothe(@Param('idClothe') idCLothe: string, @User() user: UserEntity): Promise<ClotheEntity[]> {
+    return this.usersService.likeClothe(user.id, idCLothe);
+  }
+
+  @Put('me/dislike/:idClothe')
+  @Auth()
+  async dislikeClothe(@Param('idClothe') idCLothe: string, @User() user: UserEntity): Promise<ClotheEntity[]> {
+    return this.usersService.dislikeClothe(user.id, idCLothe);
+  }
+
+  @Get('me/like')
+  @Auth()
+  async getlikeClothe(@User() user: UserEntity): Promise<ClotheEntity[]> {
+    return this.usersService.getClothe(user.id);
   }
 
   @Put('me/picture')
