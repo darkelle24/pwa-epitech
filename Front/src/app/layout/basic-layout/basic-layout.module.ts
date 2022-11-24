@@ -12,10 +12,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 
-import { SecondHeaderComponent } from './header/second-header/second-header.component';
-
 @NgModule({
-  declarations: [BasicLayoutComponent, HeaderComponent, SecondHeaderComponent],
+  declarations: [BasicLayoutComponent, HeaderComponent],
   imports: [
     CommonModule,
     RouterModule,

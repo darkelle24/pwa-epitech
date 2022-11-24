@@ -7,7 +7,6 @@
     <mat-spinner *ngIf="isLoading" diameter="100"></mat-spinner>
   </div>
   <ng-container *ngIf="!isLoading">
-    <app-box [box]="box" *ngFor="let box of listBox" ></app-box>
     <div class="toolbar">
       <button mat-fab *ngIf="!isLoadingButton" class="addButton" [matTooltip]="'Add a new box'" (click)="addBox()">
         <mat-icon>add</mat-icon>

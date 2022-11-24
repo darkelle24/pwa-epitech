@@ -35,18 +35,7 @@ const routes: Routes = [
     },
     children: [
       {path: 'box', children: [
-        { path: '', loadChildren: () => import('./page/list-boitier/list-boitier.module').then(m => m.ListBoitierModule) },
-        {
-          path: ':boxId',
-          data: {
-            secondHeader: true
-          },
-          children: [
-            {path: '', redirectTo: 'settings', pathMatch: 'full' },
-            { path: 'schema',data: {fullScreen: true}, loadChildren: () => import('./page/litegraph/litegraph.module').then(m => m.LitegraphModule) },
-            { path: 'settings', loadChildren: () => import('./page/box-settings/box-settings.module').then(m => m.BoxSettingsModule) },
-            { path: 'metrics', loadChildren: () => import('./page/current-box-data/current-box-data.module').then(m => m.CurrentBoxDataModule) },
-        ]}
+        { path: '', loadChildren: () => import('./page/list-boitier/list-boitier.module').then(m => m.ListBoitierModule) }
       ]},
     ]
   },

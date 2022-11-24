@@ -5,26 +5,22 @@ import { RouterModule } from '@angular/router';
 
 import { route } from './list-boitier.routing';
 
-import { BoxComponent } from './box/box.component';
 import { ListBoitierComponent } from './list-boitier.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { DotModule } from 'src/app/components/dot/dot.module';
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
-    ListBoitierComponent,
-    BoxComponent
+    ListBoitierComponent
   ],
   imports: [
     SharedModule,
     MatButtonModule,
-    DotModule,
     HttpClientModule,
     MatIconModule,
     MatExpansionModule,
