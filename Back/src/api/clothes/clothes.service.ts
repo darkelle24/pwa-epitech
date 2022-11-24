@@ -7,9 +7,25 @@ import { ClotheEntity } from './entities/clothe.entity';
 import { Repository } from 'typeorm';
 import { basicCreate, basicUpdate } from '@Helper/fn.helper';
 import { FileEntity } from '@File/entities/file.entity';
-import { instanceToPlain, serialize } from 'class-transformer';
-import { UsersService } from '@User/users.service';
 import { UserClotheService } from '../user-clothe/user-clothe.service';
+import { sendNotification } from 'web-push';
+
+const notificationPayload = {
+  "notification": {
+      "title": "Angular News",
+      "body": "Newsletter Available!",
+      "icon": "assets/main-page-logo-small-hat.png",
+      "vibrate": [100, 50, 100],
+      "data": {
+          "dateOfArrival": Date.now(),
+          "primaryKey": 1
+      },
+      "actions": [{
+          "action": "explore",
+          "title": "Go to the site"
+      }]
+  }
+};
 
 @Injectable()
 export class ClothesService {
@@ -45,8 +61,19 @@ export class ClothesService {
     return clothe
   }
 
-  update(id: string, updateClotheDto: UpdateClotheDto) {
-    return basicUpdate(this.clotheRepository, ClotheEntity, id, updateClotheDto)
+  async update(id: string, updateClotheDto: UpdateClotheDto) {
+    let toReturn = await basicUpdate(this.clotheRepository, ClotheEntity, id, updateClotheDto)
+    if (updateClotheDto.clotheAvaible) {
+      let ToSend = JSON.stringify(notificationPayload)
+      let user = await this.getLike(id)
+      user.forEach(async user => {
+        if (user.swSub) {
+          let sub = JSON.parse(user.swSub)
+          await sendNotification(sub, ToSend)
+        }
+      })
+    }
+    return toReturn
   }
 
   async orderClothe(id: string) {

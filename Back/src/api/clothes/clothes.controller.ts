@@ -8,6 +8,7 @@ import { UpdateClotheDto } from './dto/update-clothe.dto';
 import { UserEntity } from '@User/entities/user.entity';
 import { ApiImageFile } from '@FileUploadHelpers/api-file.decorator';
 import { FilesService } from '@File/files.service';
+import { RolesEnum } from '@Roles/roles';
 
 @ApiTags('Clothes')
 @Controller('clothes')
@@ -31,7 +32,7 @@ export class ClothesController {
   }
 
   @Get(':id/liked')
-  @Auth()
+  @Auth(RolesEnum.Admin, RolesEnum.SuperAdmin)
   findOneLiked(@Param('id') id: string) {
     return this.clothesService.getLike(id);
   }

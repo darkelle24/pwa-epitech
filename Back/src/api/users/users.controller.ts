@@ -5,7 +5,7 @@ import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, 
 import { ApiTags } from '@nestjs/swagger';
 import { Auth } from './auth/other/auth.decorator';
 import { CreateUserAdminDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { SubscribeDto, UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity, UserWithoutPassword } from './entities/user.entity';
 import { User } from './other/user.decorator';
 import { UsersService } from './users.service';
@@ -44,6 +44,12 @@ export class UsersController {
   @Auth()
   async getlikeClothe(@User() user: UserEntity): Promise<ClotheEntity[]> {
     return this.usersService.getClothe(user.id);
+  }
+
+  @Put('me/subscribe')
+  @Auth()
+  async subscribe(@User() user: UserEntity, @Body() body: SubscribeDto) {
+    return this.usersService.sub(body, user.id);
   }
 
   @Put('me/picture')

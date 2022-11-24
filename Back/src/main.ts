@@ -7,7 +7,8 @@ import { activateLogs } from './logs';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GlobalExceptionFilter } from '@ExecptionFilter/global-exception.error';
-import {generate} from 'selfsigned'
+import { generate } from 'selfsigned'
+import { setVapidDetails } from 'web-push';
 
 
 async function bootstrap() {
@@ -37,7 +38,15 @@ async function bootstrap() {
     }),
   );
 
+  setVapidDetails(
+    'http://localhost:3000',
+    process.env.VAPIDPUBLIC,
+    process.env.VAPIDPRIVATE
+  );
+
   app.useGlobalFilters(new GlobalExceptionFilter())
+
+  app.enableCors();
 
   const config = new DocumentBuilder()
     .addBearerAuth()

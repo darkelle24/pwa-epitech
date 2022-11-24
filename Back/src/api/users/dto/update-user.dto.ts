@@ -5,3 +5,11 @@ export class UpdateUserDto extends PartialType(OmitType(UserEntity, ['password',
 }
 
 export class UpdateUserAdminDto extends PartialType(OmitType(UserEntity, ['id', 'picture'] as const)) { }
+
+export class SubscribeDto {
+  endpoint: string
+  keys: {
+    p256dh: string,
+    auth: string
+  }
+}

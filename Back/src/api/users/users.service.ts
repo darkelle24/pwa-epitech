@@ -6,7 +6,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError, Repository } from 'typeorm';
 import { AuthHelper } from './auth/other/auth.helper';
 import { CreateUserAdminDto, CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { UpdateUserDto, SubscribeDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
 import { FileEntity } from '@File/entities/file.entity';
 import { unlink } from 'fs';
@@ -120,5 +120,11 @@ export class UsersService {
     }
 
     return user
+  }
+
+  async sub(sub: SubscribeDto, uuid: string) {
+    return basicUpdate(this.usersRepository, UserEntity, uuid, {
+      swSub: JSON.stringify(sub)
+    })
   }
 }
