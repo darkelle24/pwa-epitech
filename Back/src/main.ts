@@ -7,8 +7,23 @@ import { activateLogs } from './logs';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { GlobalExceptionFilter } from '@ExecptionFilter/global-exception.error';
+import {generate} from 'selfsigned'
+
 
 async function bootstrap() {
+
+  /* let attrs = [{ name: 'common', value: 'common.org' }];
+  let pems = generate(attrs, { days: 365 });
+
+  const httpsOptions = {
+    key: pems.private,
+    cert: pems.cert,
+  }; */
+
+  /* const app = await NestFactory.create(AppModule, {
+    httpsOptions,
+  }); */
+
   const app = await NestFactory.create(AppModule);
 
   activateLogs(app)

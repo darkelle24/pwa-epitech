@@ -12,8 +12,11 @@ export class AuthController {
 
   @Post('register')
   register(@Body() body: CreateUserDto): Promise<AuthReturnDto> {
+    let password = body.password
     return this.service.register(body)
-      .then(result => this.service.login({username: result.username, password: body.password}));
+      .then(result => {
+        return this.service.login({ username: result.username, password: password })
+      });
   }
 
   @Post('login')

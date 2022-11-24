@@ -30,6 +30,12 @@ export class ClothesController {
     return this.clothesService.findOne(id);
   }
 
+  @Get(':id/liked')
+  @Auth()
+  findOneLiked(@Param('id') id: string) {
+    return this.clothesService.getLike(id);
+  }
+
   @Put(':id')
   @Auth()
   async update(@Param('id') id: string, @Body() updateClotheDto: UpdateClotheDto, @User() user: UserEntity) {

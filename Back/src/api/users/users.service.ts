@@ -1,6 +1,6 @@
 import { basicCreate, basicUpdate } from '@/common/fn.helper';
 import { RolesEnum } from '@Roles/roles';
-import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError, Repository } from 'typeorm';
@@ -11,6 +11,9 @@ import { UserEntity } from './entities/user.entity';
 import { FileEntity } from '@File/entities/file.entity';
 import { unlink } from 'fs';
 import { ClothesService } from '@Clothe/clothes.service';
+import { instanceToPlain } from 'class-transformer';
+import { UserClotheEntity } from '../user-clothe/entities/user-clothe.entity';
+import { UserClotheService } from '../user-clothe/user-clothe.service';
 
 @Injectable()
 export class UsersService {
@@ -21,6 +24,8 @@ export class UsersService {
     private configService: ConfigService,
 
     private readonly clotheService: ClothesService,
+
+    private readonly userClotheService: UserClotheService,
 
     @Inject(AuthHelper)
     private readonly helper: AuthHelper
@@ -40,12 +45,10 @@ export class UsersService {
   }
 
   createAdmin(createUserDto: CreateUserAdminDto): Promise<UserEntity> {
-    (createUserDto as any).clotheLike = []
     return basicCreate(this.usersRepository, UserEntity, createUserDto)
   }
 
   create(createUserDto: CreateUserDto) {
-    (createUserDto as any).clotheLike = []
     return basicCreate(this.usersRepository, UserEntity, createUserDto)
   }
 
@@ -67,36 +70,29 @@ export class UsersService {
   }
 
   async likeClothe(id: string, idClothe: string) {
-    let clothe = await this.clotheService.findOne(idClothe)
-    let find = await this.usersRepository.findOne({ where: { id: id }, relations: ['clotheLike'] })
-    let likeClothe = await find.clotheLike
+    let clothe = await this.clotheService.clotheRepository.findOne({ where: { id: idClothe } })
 
-    if (likeClothe.find((value) => idClothe === value.id)) {
-      throw new HttpException('Already like this clothe', HttpStatus.BAD_REQUEST);
+    if (!clothe) {
+      throw new HttpException('This clothe don t exist', HttpStatus.NOT_FOUND);
     }
-    likeClothe.push(clothe);
-    find.clotheLike = likeClothe
-    await find.save()
-    return likeClothe
+    return this.userClotheService.create(id, idClothe)
   }
 
   async dislikeClothe(id: string, idClothe: string) {
-    let find = await this.usersRepository.findOne({ where: { id: id }, relations: ['clotheLike'] })
-    let likeClothe = await find.clotheLike
+    let clothe = await this.clotheService.clotheRepository.findOne({ where: { id: idClothe } })
 
-    let index = likeClothe.findIndex((value) => idClothe === value.id)
-    if (index === -1) {
-      throw new HttpException('Don t like this clothe', HttpStatus.BAD_REQUEST);
+    if (!clothe) {
+      throw new HttpException('This clothe don t exist', HttpStatus.NOT_FOUND);
     }
-    likeClothe.splice(index, 1)
-    find.clotheLike = likeClothe
-    await find.save()
-    return likeClothe
+    return this.userClotheService.delete(id, idClothe)
   }
 
 
   async getClothe(id: string) {
     let find = await this.usersRepository.findOne({ where: { id: id }, relations: ['clotheLike'] })
+    if (!find) {
+      throw new HttpException('No user found', HttpStatus.NOT_FOUND);
+    }
     return find.clotheLike
   }
 
@@ -110,6 +106,7 @@ export class UsersService {
   }
 
   async remove(uuid: string): Promise<void> {
+    await this.userClotheService.deleteAllUser(uuid)
     await this.usersRepository.delete(uuid);
   }
 

@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { CreateClotheDto } from './dto/create-clothe.dto';
 import { UpdateClotheDto } from './dto/update-clothe.dto';
 import { UserEntity } from '@User/entities/user.entity';
@@ -7,13 +7,19 @@ import { ClotheEntity } from './entities/clothe.entity';
 import { Repository } from 'typeorm';
 import { basicCreate, basicUpdate } from '@Helper/fn.helper';
 import { FileEntity } from '@File/entities/file.entity';
+import { instanceToPlain, serialize } from 'class-transformer';
+import { UsersService } from '@User/users.service';
+import { UserClotheService } from '../user-clothe/user-clothe.service';
 
 @Injectable()
 export class ClothesService {
 
   constructor(
     @InjectRepository(ClotheEntity)
-    private clotheRepository: Repository<ClotheEntity>
+    public clotheRepository: Repository<ClotheEntity>,
+
+    @Inject(forwardRef(() => UserClotheService))
+    private userClotheService: UserClotheService,
   ) {}
 
   create(createClotheDto: CreateClotheDto, user: UserEntity) {
@@ -62,8 +68,14 @@ export class ClothesService {
     return find.save()
   }
 
-  remove(id: string) {
-    return this.clotheRepository.delete(id);
+  async remove(id: string) {
+    let clothe = await this.clotheRepository.findOne({ where: { id: id } })
+    if (!clothe) {
+      throw new HttpException('No clothe found', HttpStatus.NOT_FOUND);
+    }
+
+    await this.userClotheService.deleteAllCLothe(id)
+    return this.clotheRepository.remove(clothe)
   }
 
   async checkAuth(id: string, user: UserEntity) {
@@ -74,5 +86,13 @@ export class ClothesService {
     }
 
     return clothe
+  }
+
+  async getLike(id: string) {
+    let find = await this.clotheRepository.findOne({ where: { id: id }, relations: ['liked'] })
+    if (!find) {
+      throw new HttpException('No clothe found', HttpStatus.NOT_FOUND);
+    }
+    return find.liked
   }
 }

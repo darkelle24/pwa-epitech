@@ -6,6 +6,7 @@ import { AuthModule } from './api/users/auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { FilesModule } from './api/files/files.module';
 import { ClothesModule } from './api/clothes/clothes.module';
+import { UserClotheModule } from './api/user-clothe/user-clothe.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { ClothesModule } from './api/clothes/clothes.module';
     AuthModule,
     FilesModule,
     ClothesModule,
+    UserClotheModule,
   ],
   controllers: [],
   providers: [AppService]

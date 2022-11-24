@@ -30,13 +30,13 @@ export class UsersController {
 
   @Put('me/like/:idClothe')
   @Auth()
-  async likeClothe(@Param('idClothe') idCLothe: string, @User() user: UserEntity): Promise<ClotheEntity[]> {
+  async likeClothe(@Param('idClothe') idCLothe: string, @User() user: UserEntity) {
     return this.usersService.likeClothe(user.id, idCLothe);
   }
 
   @Put('me/dislike/:idClothe')
   @Auth()
-  async dislikeClothe(@Param('idClothe') idCLothe: string, @User() user: UserEntity): Promise<ClotheEntity[]> {
+  async dislikeClothe(@Param('idClothe') idCLothe: string, @User() user: UserEntity) {
     return this.usersService.dislikeClothe(user.id, idCLothe);
   }
 

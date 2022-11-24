@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity, OneToMany, OneToOne, JoinColumn, BeforeRemove } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity, OneToMany, OneToOne, JoinColumn, BeforeRemove, ManyToMany, JoinTable } from 'typeorm';
 import { FileEntity } from '@File/entities/file.entity';
 import { UserEntity } from '@User/entities/user.entity';
 
@@ -39,5 +39,22 @@ export class ClotheEntity extends BaseEntity {
 
   @Column({nullable: true})
   latitude?: number
+
+  @ManyToMany(() => UserEntity, (user) => user.clotheLike, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION'
+  })
+  @JoinTable({
+    name: "user_clothe",
+    joinColumn: {
+        name: "clothe_id",
+        referencedColumnName: "id"
+    },
+    inverseJoinColumn: {
+        name: "user_id",
+        referencedColumnName: "id"
+    }
+  })
+  liked?: UserEntity[]
 }
 

@@ -44,13 +44,13 @@ export class AuthService {
     const user: UserEntity = await this.findOneUserWithPassword(username);
 
     if (!user) {
-      throw new HttpException('No user found', HttpStatus.NOT_FOUND);
+      throw new HttpException('Wrong email/username or password', HttpStatus.NOT_FOUND);
     }
 
     const isPasswordValid: boolean = this.helper.isPasswordValid(password, user.password);
 
     if (!isPasswordValid) {
-      throw new HttpException('No user found', HttpStatus.NOT_FOUND);
+      throw new HttpException('Wrong email/username or password', HttpStatus.NOT_FOUND);
     }
 
     const token = await this.helper.generateToken(user)
@@ -60,6 +60,7 @@ export class AuthService {
     toReturn = user
     toReturn.token = token
     delete toReturn.password
+    delete toReturn.swSub
 
     return toReturn;
   }
