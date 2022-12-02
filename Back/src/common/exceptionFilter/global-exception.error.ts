@@ -23,17 +23,17 @@ export class GlobalExceptionFilter implements ExceptionFilter {
             break;
           case QueryFailedError:  // this is a TypeOrm error
             status = HttpStatus.UNPROCESSABLE_ENTITY
-            message = (exception as QueryFailedError).message;
+            message = (exception as QueryFailedError).message + ((exception as any).detail ? ': ' + (exception as any).detail : '');
             code = (exception as any).code;
             break;
           case EntityNotFoundError:  // this is another TypeOrm error
             status = HttpStatus.UNPROCESSABLE_ENTITY
-            message = (exception as EntityNotFoundError).message;
+            message = (exception as EntityNotFoundError).message + ((exception as any).detail ? ': ' + (exception as any).detail : '');
             code = (exception as any).code;
             break;
           case CannotCreateEntityIdMapError: // and another
             status = HttpStatus.UNPROCESSABLE_ENTITY
-            message = (exception as CannotCreateEntityIdMapError).message;
+            message = (exception as CannotCreateEntityIdMapError).message + ((exception as any).detail ? ': ' + (exception as any).detail : '');
             code = (exception as any).code;
             break;
           case BadRequestException:
