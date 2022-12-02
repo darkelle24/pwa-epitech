@@ -11,6 +11,31 @@ export class AuthentificationService {
   constructor(private http: HttpClient, private toastr: ToastrService) {
   }
 
+  register(email: string, username: string, password: string ) {
+    return this.http.post<any>(environment.apiUrl + '/auth/register', { username: username, email: email, password }).pipe(
+      map (res => {
+        this.setSession(res);
+        return res
+      }),
+      tap({
+        next: res => {
+          if (isDevMode()) {
+            console.log(res)
+          }
+        },
+        error: (err: HttpErrorResponse) => {
+          if (err.error && err.error.message) {
+            console.error(err)
+            this.toastr.error(err.status + ' ' + err.statusText + ': ' + err.error.message)
+            return
+          }
+          this.toastr.error(err.message)
+        },
+      }),
+        shareReplay()
+      )
+  }
+
   login(email: string, password: string ) {
     return this.http.post<any>(environment.apiUrl + '/auth/login', { username: email, password }).pipe(
       map (res => {
@@ -24,6 +49,11 @@ export class AuthentificationService {
           }
         },
         error: (err: HttpErrorResponse) => {
+          if (err.error && err.error.message) {
+            console.error(err)
+            this.toastr.error(err.status + ' ' + err.statusText + ': ' + err.error.message)
+            return
+          }
           this.toastr.error(err.message)
         },
       }),

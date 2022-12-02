@@ -21,7 +21,8 @@ const routes: Routes = [
         layout: 'empty'
     },
     children: [
-      {path: 'login', loadChildren: () => import('./page/login/login.module').then(m => m.LoginModule) }
+      {path: 'login', loadChildren: () => import('./page/login/login.module').then(m => m.LoginModule) },
+      {path: 'register', loadChildren: () => import('./page/register/register.module').then(m => m.RegisterModule) }
     ]
   },
 

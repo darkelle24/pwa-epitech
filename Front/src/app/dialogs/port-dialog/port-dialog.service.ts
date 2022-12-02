@@ -45,6 +45,11 @@ export class PortDialogService {
           }
         },
         error: (err: HttpErrorResponse) => {
+          if (err.error && err.error.message) {
+            console.error(err)
+            this.toastr.error(err.status + ' ' + err.statusText + ': ' + err.error.message)
+            return
+          }
           this.toastr.error(err.message)
         },
       }),
@@ -61,6 +66,11 @@ export class PortDialogService {
           }
         },
         error: (err: HttpErrorResponse) => {
+          if (err.error && err.error.message) {
+            console.error(err)
+            this.toastr.error(err.status + ' ' + err.statusText + ': ' + err.error.message)
+            return
+          }
           this.toastr.error(err.message)
         },
       }),
