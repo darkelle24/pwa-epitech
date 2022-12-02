@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  projectName: 'clepsydre',
+  projectName: 'pwa_epitech',
   apiUrl: 'http://localhost:3000',
-  authRequired: false
+  authRequired: true
 };
 
 /*

@@ -10,7 +10,7 @@ const routerConfig: ExtraOptions = {
 };
 
 const routes: Routes = [
-  { path: '', redirectTo: 'box', pathMatch: 'full' },
+  { path: '', redirectTo: 'clothe', pathMatch: 'full' },
 
   {
     path: '',
@@ -34,13 +34,18 @@ const routes: Routes = [
       layout: 'basic'
     },
     children: [
-      {path: 'box', children: [
-        { path: '', loadChildren: () => import('./page/list-boitier/list-boitier.module').then(m => m.ListBoitierModule) }
+      {path: 'clothe', children: [
+        { path: '', loadChildren: () => import('./page/list-boitier/list-boitier.module').then(m => m.ListBoitierModule) },
+        {
+          path: ':clotheID',
+          children: [
+            {path: '', loadChildren: () => import('./page/one-clothe/one-clothe.module').then(m => m.OneClotheModule) },
+        ]}
       ]},
     ]
   },
 
-  { path: '**', redirectTo: 'box', pathMatch: 'full' }
+  { path: '**', redirectTo: 'clothe', pathMatch: 'full' }
 ];
 
 @NgModule({

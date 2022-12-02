@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, isDevMode } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { tap, shareReplay, Observable } from 'rxjs';
-import { BoxInterface } from 'src/app/models/box';
+import { ClotheInterface } from 'src/app/models/box';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -11,8 +11,8 @@ export class ListBoitierService {
 
   constructor(private http: HttpClient, private toastr: ToastrService) { }
 
-  getBoxes(): Observable<BoxInterface[]> {
-    return this.http.get<BoxInterface[]>(environment.apiUrl + '/boxes').pipe(
+  getClothes(): Observable<ClotheInterface[]> {
+    return this.http.get<ClotheInterface[]>(environment.apiUrl + '/clothes').pipe(
       tap({
         next: res => {
           if (isDevMode()) {
@@ -27,8 +27,8 @@ export class ListBoitierService {
       )
   }
 
-  addBox(): Observable<BoxInterface> {
-    return this.http.post<BoxInterface>(environment.apiUrl + '/boxes', {}).pipe(
+  addClothes(): Observable<ClotheInterface> {
+    return this.http.post<ClotheInterface>(environment.apiUrl + '/clothes', {}).pipe(
       tap({
         next: res => {
           if (isDevMode()) {

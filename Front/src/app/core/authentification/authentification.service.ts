@@ -33,7 +33,7 @@ export class AuthentificationService {
 
   private setSession(authResult) {
       //const expiresAt = dayjs().add(authResult.expiresIn,'second');
-      localStorage.setItem(environment.projectName + '_jwt', authResult.idToken);
+      localStorage.setItem(environment.projectName + '_jwt', authResult.token);
       //localStorage.setItem(environment.projectName + "_expires_at", JSON.stringify(expiresAt.valueOf()) );
   }
 

@@ -1,35 +1,30 @@
-import { ListBoitierService } from './list-boitier.service';
 import { SharedModule } from '../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { route } from './list-boitier.routing';
-
-import { ListBoitierComponent } from './list-boitier.component';
+import { route } from './one-clothe.routing';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatExpansionModule } from '@angular/material/expansion';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { ClotheComponent } from './clothe/clothe.component';
+import { OneClotheService } from './one-clothe.service';
+import { OneClotheComponent } from './one-clothe.component';
 
 @NgModule({
   declarations: [
-    ListBoitierComponent,
-    ClotheComponent
+    OneClotheComponent
   ],
   imports: [
     SharedModule,
     MatButtonModule,
     HttpClientModule,
     MatIconModule,
-    MatExpansionModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
     RouterModule.forChild(route),
   ],
-  providers: [ListBoitierService]
+  providers: [OneClotheService]
 })
-export class ListBoitierModule { }
+export class OneClotheModule { }

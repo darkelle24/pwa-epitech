@@ -3,7 +3,7 @@
 
     <div (click)="goTo('/box')" style="display: flex;align-items: center;align-content: center;gap: 5px;margin-left: 15px;cursor: pointer;">
         <img style="width: 40px;height: 30px;" src="../../../assets/belgium-flag.png" alt="">
-        <span>Clepsydre</span>
+        <span>PWA Epitech</span>
     </div>
 
     <span class="example-spacer"></span>
@@ -21,7 +21,7 @@
         <mat-icon>login</mat-icon>
         <span>Login</span>
       </button>
-        <button mat-menu-item>
+        <button (click)="logout()" mat-menu-item>
         <mat-icon>logout</mat-icon>
         <span>Logout</span>
       </button>

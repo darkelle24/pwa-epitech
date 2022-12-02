@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private router: Router, private titleService: Title, private AuthSevice: AuthentificationService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
+  constructor(private router: Router, private titleService: Title, private AuthSevice: AuthentificationService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('Login | Clepsydre')
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
 
         const redirectURL = this._activatedRoute.snapshot.queryParamMap.get('redirectURL') || '/';
-        this._router.navigateByUrl(redirectURL);
+        this.router.navigateByUrl(redirectURL);
       },
       error: (err: any) => { this.isLoading = false }
     })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { BoxInterface, FakeBox } from 'src/app/models/box';
+import { ClotheInterface } from 'src/app/models/box';
 import { ListBoitierService } from './list-boitier.service';
 
 @Component({
@@ -13,36 +13,34 @@ export class ListBoitierComponent implements OnInit {
   isLoading: boolean = true
   isLoadingButton: boolean = false
 
-  listBox: BoxInterface[] = [
-    FakeBox,
-  ]
+  listClothe: ClotheInterface[] = []
 
   constructor(private titleService: Title, private service: ListBoitierService) { }
 
   ngOnInit(): void {
     this.getData()
-    this.titleService.setTitle('List Box | Clepsydre')
+    this.titleService.setTitle('List Clothe | PWA Epitech')
   }
 
   getData() {
     this.isLoading = true
-    this.service.getBoxes().subscribe({
+    this.service.getClothes().subscribe({
       next: (value) => {
-        this.listBox = value
+        this.listClothe = value
         this.isLoading = false
       },
       error: (err) => {
-        this.listBox = []
+        this.listClothe = []
         this.isLoading = false
       },
     })
   }
 
-  addBox() {
+  addClothes() {
     this.isLoadingButton = true
-    this.service.addBox().subscribe({
+    this.service.addClothes().subscribe({
       next: (value) => {
-        this.listBox.push(value)
+        this.listClothe.push(value)
         this.isLoadingButton = false
       },
       error: (err) => {

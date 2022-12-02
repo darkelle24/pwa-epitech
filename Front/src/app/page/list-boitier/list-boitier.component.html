@@ -1,14 +1,17 @@
 <div class="page list">
   <div class="titlebox">
-    <h2 class="title">List of box</h2>
-    <div class="subtitle">List all of associated box</div>
+    <h2 class="title">List of Clothe</h2>
+    <div class="subtitle">List all of clothe available</div>
   </div>
   <div class="loadingBox">
     <mat-spinner *ngIf="isLoading" diameter="100"></mat-spinner>
   </div>
   <ng-container *ngIf="!isLoading">
+    <div class="listClothe">
+      <app-clothe [clothe]="clothe" *ngFor="let clothe of listClothe" ></app-clothe>
+    </div>
     <div class="toolbar">
-      <button mat-fab *ngIf="!isLoadingButton" class="addButton" [matTooltip]="'Add a new box'" (click)="addBox()">
+      <button mat-fab *ngIf="!isLoadingButton" class="addButton" [matTooltip]="'Add a new box'" (click)="addClothes()">
         <mat-icon>add</mat-icon>
       </button>
       <mat-spinner *ngIf="isLoadingButton" diameter="75"></mat-spinner>
