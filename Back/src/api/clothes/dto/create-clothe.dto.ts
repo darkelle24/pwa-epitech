@@ -12,6 +12,11 @@ export class CreateClotheDto {
   @Min(0)
   clotheAvaible: number
 
+  @IsNotEmpty()
+  @IsNumber()
+  @Min(0)
+  unitPrice: number
+
   @IsOptional()
   @IsNumber()
   longitude?: number

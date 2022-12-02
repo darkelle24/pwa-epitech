@@ -43,6 +43,7 @@ export class ClothesService {
       name: createClotheDto.name,
       clotheAvaible: createClotheDto.clotheAvaible,
       user: user,
+      unitPrice: createClotheDto.unitPrice,
       latitude: createClotheDto.latitude,
       longitude: createClotheDto.longitude
     })

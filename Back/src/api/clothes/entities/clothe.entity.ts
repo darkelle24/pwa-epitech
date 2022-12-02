@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity, OneToMany, OneToOne, JoinColumn, BeforeRemove, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Unique, BaseEntity, OneToMany, OneToOne, JoinColumn, BeforeRemove, ManyToMany, JoinTable, ManyToOne } from 'typeorm';
 import { FileEntity } from '@File/entities/file.entity';
 import { UserEntity } from '@User/entities/user.entity';
 
@@ -12,6 +12,9 @@ export class ClotheEntity extends BaseEntity {
 
   @Column()
   clotheAvaible: number
+
+  @Column()
+  unitPrice: number
 
   @OneToOne(() => FileEntity, {
     eager: true,
@@ -27,7 +30,7 @@ export class ClotheEntity extends BaseEntity {
     }
   }
 
-  @OneToOne(() => UserEntity, {
+  @ManyToOne(() => UserEntity, {
     eager: true,
     onDelete: 'CASCADE'
   })
