@@ -20,7 +20,7 @@
             "allowedCommonJsDependencies": [
               "dayjs"
             ],
-            "outputPath": "dist/clepsydre-front",
+            "outputPath": "dist/pwa-epitech",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "clepsydre-front:build:production"
+              "browserTarget": "pwa-epitech:build:production"
             },
             "development": {
-              "browserTarget": "clepsydre-front:build:development"
+              "browserTarget": "pwa-epitech:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "clepsydre-front:build"
+            "browserTarget": "pwa-epitech:build"
           }
         },
         "test": {

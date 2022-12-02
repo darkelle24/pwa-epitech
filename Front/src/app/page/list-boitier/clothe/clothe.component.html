@@ -1,10 +1,13 @@
 <div class="clothe">
-  <div class="imgDiv">
-    <img src="" alt="">
+  <div class="imgDiv" >
+    <button mat-icon-button class='favButtonDiv' (click)="handleFav()">
+      <mat-icon [ngStyle]="{color: !clothe.fav ? 'rgba(0, 0, 0, 0.54)' : 'rgb(255, 0, 0)'}">favorite</mat-icon>
+    </button>
+    <img (click)="goTo($event)" class="img" [src]="getImageUrl()" alt="">
   </div>
-  <div class="clotheInfoDiv">
+  <div class="clotheInfoDiv" (click)="goTo($event)">
     <span class="name">{{clothe.name}}</span>
-    <span class="dispo">{{clothe.clotheAvaible}}</span>
-    <!-- <span class=""></span> -->
+    <span class="dispo"><span class="realDispo">{{clothe.clotheAvaible}}</span> clothe available</span>
+    <span class="price">{{clothe.unitPrice}}<span class="priceInfo"> €</span></span>
   </div>
 </div>

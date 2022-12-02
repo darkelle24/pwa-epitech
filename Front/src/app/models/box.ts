@@ -11,6 +11,7 @@ export interface ClotheInterface {
   longitude?: number
 
   latitude?: number
+  fav: boolean
   //liked?: UserEntity[]
 }
 

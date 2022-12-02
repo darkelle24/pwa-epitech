@@ -1,6 +1,7 @@
 import { Component, Input, isDevMode, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClotheInterface } from 'src/app/models/box';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-clothe',
@@ -19,13 +20,25 @@ export class ClotheComponent implements OnInit {
     }
   }
 
-  goTo(event: MouseEvent, url: string) {
+  getImageUrl() {
+    if (this.clothe.picture && this.clothe.picture.id) {
+      return environment.apiUrl + '/files/show/' + this.clothe.picture.id
+    } else {
+      return ''
+    }
+  }
+
+  handleFav() {
+
+  }
+
+  goTo(event: MouseEvent) {
     event.stopPropagation()
     if (isDevMode()) {
       console.log(this.clothe)
-      console.log(['/clothe', this.clothe.id, url])
+      console.log(['/clothe/', this.clothe.id])
     }
-    this.router.navigate(['/box/' + this.clothe.id + url])
+    this.router.navigate(['/clothe/' + this.clothe.id])
   }
 
 }
