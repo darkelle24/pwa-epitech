@@ -32,7 +32,7 @@ export class PhotoDialogService {
 
   saveImage(file: string, id: string) {
     const formData = new FormData();
-    formData.append('picture', file)
+    formData.append('picture', file, "dab.jpeg")
     console.log('go')
     return this.http.put<any>(environment.apiUrl + '/clothes/' + id +'/picture', formData).pipe(
       tap({
