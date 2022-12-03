@@ -21,7 +21,7 @@ export class AuthentificationInterceptor implements HttpInterceptor {
     if (idToken) {
         const cloned = req.clone({
             headers: req.headers.set("Authorization",
-                "Bearer " + idToken)
+                "Bearer " + idToken).set("Bypass-Tunnel-Reminder", "")
         });
         return next.handle(cloned);
     }
