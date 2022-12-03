@@ -17,9 +17,9 @@
         <span class="price">{{clothe.unitPrice}}<span class="priceInfo"> €</span></span>
       </div>
       <div class="action">
-        <button mat-raised-button color="primary" class="like">{{clothe.fav ? "Dislike" : "Like"}}</button>
-        <button mat-raised-button color="primary" class="Update">Update</button>
-        <button mat-raised-button color="primary" [disabled]="clothe.clotheAvaible <= 0" class="order">Order</button>
+        <button mat-raised-button color="primary" (click)="handleFav()" class="like">{{clothe.fav ? "Dislike" : "Like"}}</button>
+        <button mat-raised-button color="primary" (click)="update()" class="Update">Update</button>
+        <button mat-raised-button color="primary" (click)="order()" [disabled]="clothe.clotheAvaible <= 0" class="order">Order</button>
       </div>
     </div>
   </ng-container>

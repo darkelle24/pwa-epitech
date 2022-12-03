@@ -1,19 +1,19 @@
-import { ModelDeviceTypeFilterModule } from './../../core/pipes/model-device-type-filter/model-device-type-filter.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SharedModule } from './../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { NgModule } from '@angular/core';
-import { PortDialogComponent } from './port-dialog.component';
+import { ClotheDialogComponent } from './clothe-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { PortDialogService } from './port-dialog.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AuthentificationModule } from 'src/app/core/authentification/authentification.module';
+import { ClotheDialogService } from './clothe-dialog.service';
 
 @NgModule({
   declarations: [
-    PortDialogComponent
+    ClotheDialogComponent
   ],
   imports: [
     SharedModule,
@@ -24,10 +24,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatInputModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    ModelDeviceTypeFilterModule
+    AuthentificationModule
   ],
-  exports: [PortDialogComponent],
-  entryComponents: [PortDialogComponent],
-  providers: [PortDialogService]
+  exports: [ClotheDialogComponent],
+  entryComponents: [ClotheDialogComponent],
+  providers: [ClotheDialogService]
 })
-export class PortDialogModule { }
+export class ClotheDialogModule { }

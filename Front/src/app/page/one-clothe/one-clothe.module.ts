@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { OneClotheService } from './one-clothe.service';
 import { OneClotheComponent } from './one-clothe.component';
+import { AuthentificationModule } from 'src/app/core/authentification/authentification.module';
+import { ClotheDialogModule } from '../../dialogs/clothe-dialog/clothe-dialog.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { OneClotheComponent } from './one-clothe.component';
     HttpClientModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    AuthentificationModule,
+    ClotheDialogModule,
     RouterModule.forChild(route),
   ],
   providers: [OneClotheService]

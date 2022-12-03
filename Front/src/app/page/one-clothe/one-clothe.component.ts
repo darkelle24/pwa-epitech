@@ -3,8 +3,9 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { OneClotheService } from './one-clothe.service';
 import { ClotheInterface } from '../../models/box';
-import { Subscription } from 'rxjs';
+import { catchError, forkJoin, of, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ClotheDialogService } from '../../dialogs/clothe-dialog/clothe-dialog.service';
 
 @Component({
   selector: 'app-one-clothe',
@@ -19,7 +20,7 @@ export class OneClotheComponent implements OnInit {
 
   id: string
 
-  constructor(private titleService: Title, private service: OneClotheService, private activatedRoute: ActivatedRoute) { }
+  constructor(private titleService: Title, private clotheDialogService: ClotheDialogService, private service: OneClotheService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('Clothe | PWA Epitech')
@@ -35,9 +36,17 @@ export class OneClotheComponent implements OnInit {
 
   getData(id: string) {
     this.isLoading = true
-    this.service.getOneClothe(id).subscribe({
+
+    forkJoin({ clothe: this.service.getOneClothe(id), like: this.service.getlike() }).pipe(catchError(error => of(error)))
+    .subscribe({
       next: (value) => {
-        this.clothe = value
+        let result = value.like.find(clothe => clothe.id === value.clothe.id)
+        if (result) {
+          value.clothe.fav = true
+        } else {
+          value.clothe.fav = false
+        }
+        this.clothe = value.clothe
         this.titleService.setTitle('Clothe ' + this.clothe.name + ' | PWA Epitech')
         this.isLoading = false
       },
@@ -57,7 +66,48 @@ export class OneClotheComponent implements OnInit {
   }
 
   handleFav() {
+    if (this.clothe.fav) {
+      this.service.dislike(this.clothe.id, this.clothe.name).subscribe({
+        next: (value) => {
+          this.clothe.fav = false
+        },
+        error: (err) => {
+        },
+      })
+    } else {
+      this.service.like(this.clothe.id, this.clothe.name).subscribe({
+        next: (value) => {
+          this.clothe.fav = true
+        },
+        error: (err) => {
+        },
+      })
+    }
+  }
 
+  order() {
+    this.service.order(this.clothe.id, this.clothe.name).subscribe({
+      next: (value) => {
+        let fav = this.clothe.fav
+        this.clothe = value
+        this.clothe.fav = fav
+      },
+      error: (err) => {
+      },
+    })
+  }
+
+  update() {
+    this.clotheDialogService.open({ clothe: this.clothe })
+    this.clotheDialogService.confirmed().subscribe({
+      next: (value) => {
+        if (value) {
+          let fav = this.clothe.fav
+          this.clothe = value
+          this.clothe.fav = fav
+        }
+      }
+    })
   }
 
 }

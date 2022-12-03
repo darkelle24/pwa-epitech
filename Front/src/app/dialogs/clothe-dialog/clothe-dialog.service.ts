@@ -1,43 +1,45 @@
 import { Injectable, isDevMode } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { map, Observable, shareReplay, take, tap } from 'rxjs';
-import { PortDialogComponent } from './port-dialog.component';
-import { PortInterface, SensorInterface, TriggerInterface, BoxInterface } from 'src/app/models/box';
+import { ClotheDialogComponent } from './clothe-dialog.component';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
+import { ClotheInterface } from 'src/app/models/box';
 
-export interface PortDialogData {
-  port: PortInterface,
-  idBox: string
-}
-
-export interface DeviceList {
-  triggers: TriggerInterface[],
-  sensors: SensorInterface[]
+export interface DialogData {
+  clothe?: ClotheInterface
 }
 
 @Injectable()
 
-export class PortDialogService {
+export class ClotheDialogService {
 
   constructor(private dialog: MatDialog, private http: HttpClient, private toastr: ToastrService) { }
 
-  dialogRef: MatDialogRef<PortDialogComponent, (PortInterface | undefined)>;
+  dialogRef: MatDialogRef<ClotheDialogComponent, (ClotheInterface | undefined)>;
 
-  public open(options: PortDialogData) {
-    this.dialogRef = this.dialog.open(PortDialogComponent, {data: options, width: '400px'});
+  public open(options: DialogData) {
+    this.dialogRef = this.dialog.open(ClotheDialogComponent, {data: options, width: '400px'});
   }
 
-  public confirmed(): Observable<(PortInterface | undefined)> {
+  public confirmed(): Observable<(ClotheInterface | undefined)> {
     return this.dialogRef.afterClosed().pipe(take(1), map(res => {
         return res;
       }
     ));
   }
 
-  getDevices(): Observable<DeviceList> {
-    return this.http.get<DeviceList>(environment.apiUrl + '/boxes/devices').pipe(
+  public saveClothe(name: string, stock: number, price: number, id?: string) {
+    if (id) {
+      return this.updateClothe(name, stock, price, id)
+    } else {
+      return this.createClothe(name, stock, price)
+    }
+  }
+
+  private updateClothe(name: string, stock: number, price: number, id: string) {
+    return this.http.put<ClotheInterface>(environment.apiUrl + '/clothes/' + id, {name: name, clotheAvaible: stock, unitPrice: price}).pipe(
       tap({
         next: res => {
           if (isDevMode()) {
@@ -57,8 +59,8 @@ export class PortDialogService {
       )
   }
 
-  savePortConfig(id: string, portId:number , name: string, device: string, isActive: boolean = true): Observable<BoxInterface> {
-    return this.http.put<BoxInterface>(environment.apiUrl + '/boxes/' + id, {ports: [{pin: portId, name, activated: isActive, deviceModel: device}]}).pipe(
+  private createClothe(name: string, stock: number, price: number) {
+    return this.http.post<ClotheInterface>(environment.apiUrl + '/clothes', {name: name, clotheAvaible: stock, unitPrice: price}).pipe(
       tap({
         next: res => {
           if (isDevMode()) {
