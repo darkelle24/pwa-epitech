@@ -3,14 +3,14 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "deploy": "ng deploy",
         "start": "ng serve",
         "build": "ng build --stats-json",
         "start:pwa": "ng build --configuration development && angular-http-server --path dist/pwa-epitech",
         "start:pwa:noBuild": "angular-http-server --path dist/pwa-epitech",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
-        "pwa": "http-server -p 8081 -c-1 dist/pwa-epitech"
+        "pwa": "http-server -p 8081 -c-1 dist/pwa-epitech",
+        "deploy": "ng deploy --base-href=/angular-app/"
     },
     "private": true,
     "dependencies": {
@@ -39,6 +39,7 @@
         "@angular/cli": "~14.2.2",
         "@angular/compiler-cli": "^14.2.0",
         "@types/jasmine": "~4.0.0",
+        "angular-cli-ghpages": "^1.0.5",
         "jasmine-core": "~4.3.0",
         "karma": "~6.4.0",
         "karma-chrome-launcher": "~3.1.0",
