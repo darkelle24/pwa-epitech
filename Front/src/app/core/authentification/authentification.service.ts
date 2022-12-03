@@ -61,14 +61,41 @@ export class AuthentificationService {
       )
   }
 
+  public getMe() {
+      return this.http.get<any>(environment.apiUrl + '/users/me').pipe(
+        map (res => {
+          localStorage.setItem(environment.projectName + '_info', JSON.stringify(res));
+          return res
+        }),
+        tap({
+          next: res => {
+            if (isDevMode()) {
+              console.log(res)
+            }
+          },
+          error: (err: HttpErrorResponse) => {
+            if (err.error && err.error.message) {
+              console.error(err)
+              this.toastr.error(err.status + ' ' + err.statusText + ': ' + err.error.message)
+              return
+            }
+            this.toastr.error(err.message)
+          },
+        }),
+          shareReplay()
+        )
+  }
+
   private setSession(authResult) {
       //const expiresAt = dayjs().add(authResult.expiresIn,'second');
+      localStorage.setItem(environment.projectName + '_info', JSON.stringify(authResult));
       localStorage.setItem(environment.projectName + '_jwt', authResult.token);
       //localStorage.setItem(environment.projectName + "_expires_at", JSON.stringify(expiresAt.valueOf()) );
   }
 
   logout() {
-      localStorage.removeItem(environment.projectName + "_jwt");
+    localStorage.removeItem(environment.projectName + "_jwt");
+    localStorage.removeItem(environment.projectName + '_info');
       //localStorage.removeItem(environment.projectName + "_expires_at");
   }
 

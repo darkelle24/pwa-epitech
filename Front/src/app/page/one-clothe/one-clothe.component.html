@@ -6,7 +6,24 @@
   <div class="loadingBox">
     <mat-spinner *ngIf="isLoading" diameter="100"></mat-spinner>
   </div>
-  <ng-container *ngIf="!isLoading">
-
+  <ng-container *ngIf="!isLoading && clothe">
+    <div class="clothe">
+      <div class="imgDiv" >
+        <img class="img" [src]="getImageUrl()" alt="">
+      </div>
+      <div class="clotheInfoDiv">
+        <span class="name">{{clothe.name}}</span>
+        <span class="dispo"><span class="realDispo">{{clothe.clotheAvaible}}</span> clothe available</span>
+        <span class="price">{{clothe.unitPrice}}<span class="priceInfo"> €</span></span>
+      </div>
+      <div class="action">
+        <button mat-raised-button color="primary" class="like">{{clothe.fav ? "Dislike" : "Like"}}</button>
+        <button mat-raised-button color="primary" class="Update">Update</button>
+        <button mat-raised-button color="primary" [disabled]="clothe.clotheAvaible <= 0" class="order">Order</button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!isLoading && !clothe">
+    <h1>Clothe not found</h1>
   </ng-container>
 </div>

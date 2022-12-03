@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NotificationModule } from 'src/app/core/notification/notification.module';
 
 @NgModule({
   declarations: [BasicLayoutComponent, HeaderComponent],
@@ -22,7 +23,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatMenuModule,
     MatToolbarModule,
     MatButtonModule,
-    MatTabsModule
+    MatTabsModule,
+    NotificationModule
   ],
   exports: [BasicLayoutComponent]
 })

@@ -12,6 +12,7 @@ import { AuthentificationModule } from './core/authentification/authentification
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { environment } from 'src/environments/environment';
+import { NotificationModule } from './core/notification/notification.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthentificationModule,
+    NotificationModule,
     ToastrModule.forRoot({
       autoDismiss: true,
       maxOpened: 3,

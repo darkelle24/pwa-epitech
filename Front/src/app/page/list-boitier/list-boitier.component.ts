@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ClotheInterface } from 'src/app/models/box';
+import { ClotheInterface, UserInterface } from 'src/app/models/box';
 import { ListBoitierService } from './list-boitier.service';
+import { AuthentificationService } from '../../core/authentification/authentification.service';
+import { catchError, forkJoin, of } from 'rxjs';
 
 @Component({
   selector: 'app-list-boitier',
@@ -15,6 +17,8 @@ export class ListBoitierComponent implements OnInit {
 
   listClothe: ClotheInterface[] = []
 
+  like: ClotheInterface[] = []
+
   constructor(private titleService: Title, private service: ListBoitierService) { }
 
   ngOnInit(): void {
@@ -24,13 +28,22 @@ export class ListBoitierComponent implements OnInit {
 
   getData() {
     this.isLoading = true
-    this.service.getClothes().subscribe({
+    forkJoin({ clothe: this.service.getClothes(), like: this.service.getlike() }).pipe(catchError(error => of(error)))
+    .subscribe({
       next: (value) => {
-        this.listClothe = value
+        value.like.forEach(element => {
+          let result = value.clothe.find(clothe => clothe.id === element.id)
+          if (result) {
+            result.fav = true
+          }
+        });
+        this.listClothe = value.clothe
+        this.like = value.like
         this.isLoading = false
       },
       error: (err) => {
         this.listClothe = []
+        this.like = []
         this.isLoading = false
       },
     })

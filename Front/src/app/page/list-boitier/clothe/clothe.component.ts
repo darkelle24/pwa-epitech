@@ -2,6 +2,7 @@ import { Component, Input, isDevMode, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClotheInterface } from 'src/app/models/box';
 import { environment } from 'src/environments/environment';
+import { ListBoitierService } from '../list-boitier.service';
 
 @Component({
   selector: 'app-clothe',
@@ -12,7 +13,7 @@ export class ClotheComponent implements OnInit {
 
   @Input() clothe: ClotheInterface;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service: ListBoitierService) { }
 
   ngOnInit(): void {
     if (isDevMode()) {
@@ -29,7 +30,23 @@ export class ClotheComponent implements OnInit {
   }
 
   handleFav() {
-
+    if (this.clothe.fav) {
+      this.service.dislike(this.clothe.id, this.clothe.name).subscribe({
+        next: (value) => {
+          this.clothe.fav = false
+        },
+        error: (err) => {
+        },
+      })
+    } else {
+      this.service.like(this.clothe.id, this.clothe.name).subscribe({
+        next: (value) => {
+          this.clothe.fav = true
+        },
+        error: (err) => {
+        },
+      })
+    }
   }
 
   goTo(event: MouseEvent) {

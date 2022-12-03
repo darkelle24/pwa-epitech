@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OneClotheService } from './one-clothe.service';
 import { ClotheInterface } from '../../models/box';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-one-clothe',
@@ -45,6 +46,18 @@ export class OneClotheComponent implements OnInit {
         this.isLoading = false
       },
     })
+  }
+
+  getImageUrl() {
+    if (this.clothe.picture && this.clothe.picture.id) {
+      return environment.apiUrl + '/files/show/' + this.clothe.picture.id
+    } else {
+      return ''
+    }
+  }
+
+  handleFav() {
+
   }
 
 }

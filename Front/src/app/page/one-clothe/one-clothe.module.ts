@@ -6,7 +6,6 @@ import { route } from './one-clothe.routing';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import {MatTooltipModule} from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { OneClotheService } from './one-clothe.service';
@@ -21,7 +20,6 @@ import { OneClotheComponent } from './one-clothe.component';
     MatButtonModule,
     HttpClientModule,
     MatIconModule,
-    MatTooltipModule,
     MatProgressSpinnerModule,
     RouterModule.forChild(route),
   ],

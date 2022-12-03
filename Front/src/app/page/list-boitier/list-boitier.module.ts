@@ -14,6 +14,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ClotheComponent } from './clothe/clothe.component';
+import { AuthentificationModule } from 'src/app/core/authentification/authentification.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ClotheComponent } from './clothe/clothe.component';
     MatIconModule,
     MatExpansionModule,
     MatTooltipModule,
+    AuthentificationModule,
     MatProgressSpinnerModule,
     RouterModule.forChild(route),
   ],
