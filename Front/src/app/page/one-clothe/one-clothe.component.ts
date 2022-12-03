@@ -111,6 +111,16 @@ export class OneClotheComponent implements OnInit {
     })
   }
 
+  checkSame() {
+    let user = JSON.parse(localStorage.getItem(environment.projectName + '_info'))
+
+    if (user.id !== this.clothe.id) {
+      return false
+    } else {
+      return true
+    }
+  }
+
   openPhoto() {
     this.photoDialogService.open({ clothe: this.clothe })
     this.photoDialogService.confirmed().subscribe({
