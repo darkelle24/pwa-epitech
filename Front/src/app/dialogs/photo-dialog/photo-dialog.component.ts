@@ -93,6 +93,7 @@ export class PhotoDialogComponent implements OnInit {
   onSubmit() {
     this.isLoading = true
     this.changeDetectionRef.detectChanges();
+    console.log('go')
     this.service.saveImage(this.previewImage, this.data.clothe.id).subscribe({
       next: (value) => {
         this.isLoading = false;
