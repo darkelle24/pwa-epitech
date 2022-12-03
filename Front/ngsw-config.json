@@ -26,5 +26,20 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "save",
+      "urls": [
+        "https://test-pwa.loca.lt/",
+        "http://localhost:3000/"
+      ],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "1h",
+        "timeout": "0u",
+        "strategy": "freshness"
+      }
+    }
   ]
 }
