@@ -1,0 +1,97 @@
+{
+  "configVersion": 1,
+  "timestamp": 1670070895816,
+  "index": "/pwa-epitech/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/pwa-epitech/522.86cda0fe9faf50bf.js",
+        "/pwa-epitech/54.5e48c4b93e174bae.js",
+        "/pwa-epitech/59.93da7cfca06eaad8.js",
+        "/pwa-epitech/700.830bd16027a6c334.js",
+        "/pwa-epitech/752.c45e4334065040b9.js",
+        "/pwa-epitech/862.4c2450863fc383e3.js",
+        "/pwa-epitech/favicon.ico",
+        "/pwa-epitech/index.html",
+        "/pwa-epitech/main.365bef55eb95d739.js",
+        "/pwa-epitech/manifest.webmanifest",
+        "/pwa-epitech/polyfills.c61cf16485dcf172.js",
+        "/pwa-epitech/runtime.e4b282a43eba47b2.js",
+        "/pwa-epitech/styles.93d94699e9034505.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/pwa-epitech/assets/bulb_off.png",
+        "/pwa-epitech/assets/bulb_on.png",
+        "/pwa-epitech/assets/icons/icon-128x128.png",
+        "/pwa-epitech/assets/icons/icon-144x144.png",
+        "/pwa-epitech/assets/icons/icon-152x152.png",
+        "/pwa-epitech/assets/icons/icon-192x192.png",
+        "/pwa-epitech/assets/icons/icon-384x384.png",
+        "/pwa-epitech/assets/icons/icon-512x512.png",
+        "/pwa-epitech/assets/icons/icon-72x72.png",
+        "/pwa-epitech/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/pwa-epitech/522.86cda0fe9faf50bf.js": "9e7ba47fbe05c72a9fac7c5013aa2ec23fe3754f",
+    "/pwa-epitech/54.5e48c4b93e174bae.js": "211ffa776ef9ff83d292ca656478094f29a4bb96",
+    "/pwa-epitech/59.93da7cfca06eaad8.js": "60e5c3cedea943efa39f22992e58d892a3160d74",
+    "/pwa-epitech/700.830bd16027a6c334.js": "7c133db0b1e426da462b4f4a9788bf1998c8f87b",
+    "/pwa-epitech/752.c45e4334065040b9.js": "ec579cffc14019b9e09877efc7122b32a92cc4ee",
+    "/pwa-epitech/862.4c2450863fc383e3.js": "569127634034d18439c7e65e9038bbad21e1d7eb",
+    "/pwa-epitech/assets/bulb_off.png": "f09b90bfe4f01623315d3fa3fe9d7e7f6e8e248e",
+    "/pwa-epitech/assets/bulb_on.png": "1764dfd301b52a8fa49d6b42c51682779782027e",
+    "/pwa-epitech/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/pwa-epitech/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/pwa-epitech/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/pwa-epitech/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/pwa-epitech/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/pwa-epitech/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/pwa-epitech/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/pwa-epitech/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/pwa-epitech/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/pwa-epitech/index.html": "2bc2a0ddc514ce46d55a6d0f1840d9a62b83b4f4",
+    "/pwa-epitech/main.365bef55eb95d739.js": "acf3cf079c7575c0b4f456bf043c53db308c2ffa",
+    "/pwa-epitech/manifest.webmanifest": "999b929e3fbf2ea831cff5df30e0647f962f14c3",
+    "/pwa-epitech/polyfills.c61cf16485dcf172.js": "29cfa81701036184d7b5bbe05eed78d197cff0c6",
+    "/pwa-epitech/runtime.e4b282a43eba47b2.js": "5e214f2585d5e92596eef942036972b16895b339",
+    "/pwa-epitech/styles.93d94699e9034505.css": "c8e4e26a82a2acb710ce229c6396a9f4f1e502b3"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
