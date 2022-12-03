@@ -114,7 +114,6 @@ export class OneClotheComponent implements OnInit {
   checkSame() {
     let user = JSON.parse(localStorage.getItem(environment.projectName + '_info'))
 
-    console.log(user)
     if (user.id !== this.clothe.user.id) {
       return false
     } else {

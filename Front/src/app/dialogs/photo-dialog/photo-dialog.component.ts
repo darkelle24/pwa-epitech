@@ -40,7 +40,7 @@ export class PhotoDialogComponent implements OnInit {
 
   snapshot(event: WebcamImage) {
     console.log(event);
-    this.previewImage = event.imageAsBase64;
+    this.previewImage = event.imageAsDataUrl;
     this.btnLabel = 'Re capture image'
   }
 
@@ -90,11 +90,31 @@ export class PhotoDialogComponent implements OnInit {
     this.close();
   }
 
+  dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+  }
+
   onSubmit() {
     this.isLoading = true
     this.changeDetectionRef.detectChanges();
-    console.log('go')
-    this.service.saveImage(this.previewImage, this.data.clothe.id).subscribe({
+    console.log(this.previewImage)
+    this.service.saveImage(this.dataURItoBlob(this.previewImage), this.data.clothe.id).subscribe({
       next: (value) => {
         this.isLoading = false;
         console.log(value)
