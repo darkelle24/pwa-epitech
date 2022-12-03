@@ -1,4 +1,5 @@
 import { Component, isDevMode } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
 import { environment } from '../environments/environment.prod';
 
 @Component({
@@ -7,7 +8,7 @@ import { environment } from '../environments/environment.prod';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor() {
+  constructor(private swUpdate: SwUpdate) {
     if (!isDevMode() && !environment.authRequired) {
       console.warn('Be careful authRequired is not activated in prod mode.')
     } else if (isDevMode()) {
@@ -17,6 +18,17 @@ export class AppComponent {
       if (isDevMode()) {
         console.log(toShow)
       }
+    }
+
+    if (this.swUpdate.isEnabled) {
+
+      this.swUpdate.available.subscribe(() => {
+
+          if(confirm("New version available. Load New Version?")) {
+
+              window.location.reload();
+          }
+      });
     }
   }
 }
