@@ -1,0 +1,9 @@
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem !important;
+}
+
+.selectModelPlaceholder ::ng-deep .mat-select-placeholder {
+  color: var(--text-default) !important;
+}

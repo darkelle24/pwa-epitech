@@ -1,0 +1,33 @@
+
+<div class="mat-dialog-div">
+  <div class="mat-dialog-body">
+    <div class="mat-dialog-header">
+      <h1 *ngIf="data.clothe" mat-dialog-title>Modify Clothe {{data.clothe.name}}</h1>
+      <h1 *ngIf="!data.clothe" mat-dialog-title>Create new Clothe</h1>
+      <div class="closeButton">
+        <button mat-icon-button (click)="cancel()" tabindex="-1">
+            <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div mat-dialog-content>
+      <div *ngIf="stream">
+        <!-- web cam image will be shown here -->
+        <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" [imageQuality]="1"></webcam>
+        <button (click)="captureImage()" >{{btnLabel}}</button>
+      </div>
+      <div *ngIf="!stream">
+        <button mat-raised-button (click)="checkPermissions()">Check the webcam permissions</button>
+        <p *ngIf="status">Status here: {{status}}</p>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+
+    <button class="submitButton" style="background-color: green;border: none!important" mat-stroked-button type="submit" form="myForm" (click)="captureImage()" [disabled]="!stream">Save</button>
+    <button (click)="cancel()" style="background-color: red;border: none!important" mat-stroked-button>Cancel</button>
+
+  </div>
+</div>
+
+

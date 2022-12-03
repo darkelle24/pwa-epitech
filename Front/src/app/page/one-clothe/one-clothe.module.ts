@@ -12,6 +12,7 @@ import { OneClotheService } from './one-clothe.service';
 import { OneClotheComponent } from './one-clothe.component';
 import { AuthentificationModule } from 'src/app/core/authentification/authentification.module';
 import { ClotheDialogModule } from '../../dialogs/clothe-dialog/clothe-dialog.module';
+import { PhotoDialogModule } from '../../dialogs/photo-dialog/photo-dialog.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ClotheDialogModule } from '../../dialogs/clothe-dialog/clothe-dialog.mo
     MatProgressSpinnerModule,
     AuthentificationModule,
     ClotheDialogModule,
+    PhotoDialogModule,
     RouterModule.forChild(route),
   ],
   providers: [OneClotheService]

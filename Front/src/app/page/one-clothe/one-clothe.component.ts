@@ -6,6 +6,7 @@ import { ClotheInterface } from '../../models/box';
 import { catchError, forkJoin, of, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ClotheDialogService } from '../../dialogs/clothe-dialog/clothe-dialog.service';
+import { PhotoDialogService } from '../../dialogs/photo-dialog/photo-dialog.service';
 
 @Component({
   selector: 'app-one-clothe',
@@ -20,7 +21,7 @@ export class OneClotheComponent implements OnInit {
 
   id: string
 
-  constructor(private titleService: Title, private clotheDialogService: ClotheDialogService, private service: OneClotheService, private activatedRoute: ActivatedRoute) { }
+  constructor(private titleService: Title, private photoDialogService: PhotoDialogService, private clotheDialogService: ClotheDialogService, private service: OneClotheService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('Clothe | PWA Epitech')
@@ -100,6 +101,19 @@ export class OneClotheComponent implements OnInit {
   update() {
     this.clotheDialogService.open({ clothe: this.clothe })
     this.clotheDialogService.confirmed().subscribe({
+      next: (value) => {
+        if (value) {
+          let fav = this.clothe.fav
+          this.clothe = value
+          this.clothe.fav = fav
+        }
+      }
+    })
+  }
+
+  openPhoto() {
+    this.photoDialogService.open({ clothe: this.clothe })
+    this.photoDialogService.confirmed().subscribe({
       next: (value) => {
         if (value) {
           let fav = this.clothe.fav
