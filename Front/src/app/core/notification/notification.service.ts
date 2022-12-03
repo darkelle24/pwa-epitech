@@ -37,11 +37,11 @@ export class NotificationService {
 
   subscribeToNotifications() {
     if (this.AuthSevice.isLoggedIn()) {
-      /* this.swPush.requestSubscription({
+      this.swPush.requestSubscription({
         serverPublicKey: environment.VAPID_PUBLIC_KEY
       })
         .then(sub => this.subNotification(sub).subscribe())
-        .catch(err => console.error("Could not subscribe to notifications", err)); */
+        .catch(err => console.error("Could not subscribe to notifications", err));
     } else {
       console.log("No sub, Not logged")
     }
