@@ -1,1 +1,12 @@
-<p>one-clothe works!</p>
+<div class="page list">
+  <div class="titlebox">
+    <h2 class="title">List of Clothe</h2>
+    <div class="subtitle">List all of clothe available</div>
+  </div>
+  <div class="loadingBox">
+    <mat-spinner *ngIf="isLoading" diameter="100"></mat-spinner>
+  </div>
+  <ng-container *ngIf="!isLoading">
+
+  </ng-container>
+</div>
