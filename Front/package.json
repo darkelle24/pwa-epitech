@@ -10,7 +10,7 @@
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "pwa": "http-server -p 8081 -c-1 dist/pwa-epitech",
-        "deploy": "ng deploy --base-href=/angular-app/"
+        "deploy": "ng deploy --base-href=/pwa-epitech/"
     },
     "private": true,
     "dependencies": {
