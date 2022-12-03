@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1670078077021,
+  "timestamp": 1670078749003,
   "index": "/pwa-epitech/index.html",
   "assetGroups": [
     {
@@ -19,7 +19,7 @@
         "/pwa-epitech/862.4c2450863fc383e3.js",
         "/pwa-epitech/favicon.ico",
         "/pwa-epitech/index.html",
-        "/pwa-epitech/main.7564f7b65fb56db2.js",
+        "/pwa-epitech/main.3f5a449b99f34473.js",
         "/pwa-epitech/manifest.webmanifest",
         "/pwa-epitech/polyfills.c61cf16485dcf172.js",
         "/pwa-epitech/runtime.a39ede27746d9f4a.js",
@@ -84,8 +84,8 @@
     "/pwa-epitech/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/pwa-epitech/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/pwa-epitech/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/pwa-epitech/index.html": "dcd89f236070b477e75992d1e4de0b4f3d15d46e",
-    "/pwa-epitech/main.7564f7b65fb56db2.js": "44dc45ce405256bfd0727dd691a22216af84ea15",
+    "/pwa-epitech/index.html": "bec20ad65bd6d4dc61bdf5b592af2063027ef8c0",
+    "/pwa-epitech/main.3f5a449b99f34473.js": "0feaa15cc8cd09ece38ff3a7fcf968f51ad40a9a",
     "/pwa-epitech/manifest.webmanifest": "999b929e3fbf2ea831cff5df30e0647f962f14c3",
     "/pwa-epitech/polyfills.c61cf16485dcf172.js": "29cfa81701036184d7b5bbe05eed78d197cff0c6",
     "/pwa-epitech/runtime.a39ede27746d9f4a.js": "042228c68d25f983fe5d401cf779ba377c2fe412",
