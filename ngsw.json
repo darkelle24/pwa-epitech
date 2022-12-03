@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1670075575193,
+  "timestamp": 1670075677678,
   "index": "/pwa-epitech/index.html",
   "assetGroups": [
     {
@@ -12,7 +12,7 @@
       },
       "urls": [
         "/pwa-epitech/522.86cda0fe9faf50bf.js",
-        "/pwa-epitech/54.42678e7b7feb5825.js",
+        "/pwa-epitech/54.74763302ce9d5182.js",
         "/pwa-epitech/59.93da7cfca06eaad8.js",
         "/pwa-epitech/700.830bd16027a6c334.js",
         "/pwa-epitech/752.c45e4334065040b9.js",
@@ -22,7 +22,7 @@
         "/pwa-epitech/main.81d6f8ce6568abfb.js",
         "/pwa-epitech/manifest.webmanifest",
         "/pwa-epitech/polyfills.c61cf16485dcf172.js",
-        "/pwa-epitech/runtime.33bfa38388ec6e24.js",
+        "/pwa-epitech/runtime.c31cf74f0adc4c08.js",
         "/pwa-epitech/styles.93d94699e9034505.css"
       ],
       "patterns": []
@@ -68,7 +68,7 @@
   ],
   "hashTable": {
     "/pwa-epitech/522.86cda0fe9faf50bf.js": "9e7ba47fbe05c72a9fac7c5013aa2ec23fe3754f",
-    "/pwa-epitech/54.42678e7b7feb5825.js": "bc620faf4be2279bcd60a6e542394464b05693cb",
+    "/pwa-epitech/54.74763302ce9d5182.js": "73ba8f415f098c6da53ce31bf4ef0fb8da69d0df",
     "/pwa-epitech/59.93da7cfca06eaad8.js": "60e5c3cedea943efa39f22992e58d892a3160d74",
     "/pwa-epitech/700.830bd16027a6c334.js": "7c133db0b1e426da462b4f4a9788bf1998c8f87b",
     "/pwa-epitech/752.c45e4334065040b9.js": "ec579cffc14019b9e09877efc7122b32a92cc4ee",
@@ -84,11 +84,11 @@
     "/pwa-epitech/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/pwa-epitech/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/pwa-epitech/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/pwa-epitech/index.html": "ba7fe6d321620e847e3321ae027c7078bf80bfdc",
+    "/pwa-epitech/index.html": "4409f7702d0d7987f32b49a3fee655547a5b3e7c",
     "/pwa-epitech/main.81d6f8ce6568abfb.js": "7b50d110b92eaa90f2ed16a1e1600d94aa1d87a7",
     "/pwa-epitech/manifest.webmanifest": "999b929e3fbf2ea831cff5df30e0647f962f14c3",
     "/pwa-epitech/polyfills.c61cf16485dcf172.js": "29cfa81701036184d7b5bbe05eed78d197cff0c6",
-    "/pwa-epitech/runtime.33bfa38388ec6e24.js": "65fcb7a86371ddde9584c6f583e589bd9a6698e7",
+    "/pwa-epitech/runtime.c31cf74f0adc4c08.js": "ee6aeb347b4b85284366552aa29a74644429b2b0",
     "/pwa-epitech/styles.93d94699e9034505.css": "c8e4e26a82a2acb710ce229c6396a9f4f1e502b3"
   },
   "navigationUrls": [
