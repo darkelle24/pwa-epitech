@@ -20,7 +20,7 @@ export class PhotoDialogService {
   dialogRef: MatDialogRef<PhotoDialogComponent, (ClotheInterface | undefined)>;
 
   public open(options: DialogData) {
-    this.dialogRef = this.dialog.open(PhotoDialogComponent, {data: options, width: '400px'});
+    this.dialogRef = this.dialog.open(PhotoDialogComponent, {data: options, width: '700px'});
   }
 
   public confirmed(): Observable<(ClotheInterface | undefined)> {
