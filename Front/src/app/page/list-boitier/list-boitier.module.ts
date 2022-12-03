@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ClotheComponent } from './clothe/clothe.component';
 import { AuthentificationModule } from 'src/app/core/authentification/authentification.module';
+import { ClotheDialogModule } from 'src/app/dialogs/clothe-dialog/clothe-dialog.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AuthentificationModule } from 'src/app/core/authentification/authentifi
     MatTooltipModule,
     AuthentificationModule,
     MatProgressSpinnerModule,
+    ClotheDialogModule,
     RouterModule.forChild(route),
   ],
   providers: [ListBoitierService]

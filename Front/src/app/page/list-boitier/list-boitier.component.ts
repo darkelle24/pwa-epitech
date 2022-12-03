@@ -4,6 +4,7 @@ import { ClotheInterface, UserInterface } from 'src/app/models/box';
 import { ListBoitierService } from './list-boitier.service';
 import { AuthentificationService } from '../../core/authentification/authentification.service';
 import { catchError, forkJoin, of } from 'rxjs';
+import { ClotheDialogService } from 'src/app/dialogs/clothe-dialog/clothe-dialog.service';
 
 @Component({
   selector: 'app-list-boitier',
@@ -19,7 +20,7 @@ export class ListBoitierComponent implements OnInit {
 
   like: ClotheInterface[] = []
 
-  constructor(private titleService: Title, private service: ListBoitierService) { }
+  constructor(private titleService: Title, private clotheDialogService: ClotheDialogService, private service: ListBoitierService) { }
 
   ngOnInit(): void {
     this.getData()
@@ -51,14 +52,15 @@ export class ListBoitierComponent implements OnInit {
 
   addClothes() {
     this.isLoadingButton = true
-    this.service.addClothes().subscribe({
-      next: (value) => {
-        this.listClothe.push(value)
-        this.isLoadingButton = false
-      },
-      error: (err) => {
-        this.isLoadingButton = false
-      },
+    this.clotheDialogService.open({})
+    this.clotheDialogService.confirmed().subscribe({
+        next: (value) => {
+          this.isLoadingButton = false
+        if (value) {
+            value.fav = false
+            this.listClothe.push(value)
+          }
+        }
     })
   }
 
